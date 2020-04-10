@@ -5,5 +5,5 @@ hook.Add( "PlayerInitialSpawn","FullLoadSetup", function( spawnedPly )
 
         hook.Run( "PlayerFullLoad", self )
         hook.Remove( "SetupMove", self )
-    end)
+    end )
 end)
