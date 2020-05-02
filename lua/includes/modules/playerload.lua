@@ -3,7 +3,7 @@ hook.Add( "PlayerInitialSpawn","FullLoadSetup", function( spawnedPly )
         if self ~= ply then return end
         if cmd:IsForced() then return end
 
-        hook.Run( "PlayerFullLoad", self )
         hook.Remove( "SetupMove", self )
+        hook.Run( "PlayerFullLoad", self )
     end )
 end )
