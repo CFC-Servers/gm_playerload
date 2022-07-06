@@ -6,12 +6,12 @@ end
 hook.Add( "PlayerInitialSpawn","GM_FullLoadSetup", function( spawnedPly )
     local hookName = getHookName( spawnedPly )
 
-    hook.Add( "SetupMove", hookName, function( self, ply, _, cmd )
-        if self ~= ply then return end
+    hook.Add( "SetupMove", hookName, function( ply, _, cmd )
+        if ply ~= spawnedPly then return end
         if cmd:IsForced() then return end
 
         hook.Remove( "SetupMove", hookName )
-        hook.Run( "PlayerFullLoad", self )
+        hook.Run( "PlayerFullLoad", ply )
     end )
 end )
 
