@@ -1,9 +1,21 @@
+local function getHookName( ply )
+    local steamID = ply:SteamID64()
+    return "GM_FullLoad_" .. steamID
+end
+
 hook.Add( "PlayerInitialSpawn","GM_FullLoadSetup", function( spawnedPly )
-    hook.Add( "SetupMove", spawnedPly, function( self, ply, _, cmd )
+    local hookName = getHookName( spawnedPly )
+
+    hook.Add( "SetupMove", hookName, function( self, ply, _, cmd )
         if self ~= ply then return end
         if cmd:IsForced() then return end
 
-        hook.Remove( "SetupMove", self )
+        hook.Remove( "SetupMove", hookName )
         hook.Run( "PlayerFullLoad", self )
     end )
+end )
+
+hook.Add( "PlayerDisconnected", "GM_FullLoadCleanup", function( ply )
+    local hookName = getHookName( ply )
+    hook.Remove( "SetupMove", hookName )
 end )
