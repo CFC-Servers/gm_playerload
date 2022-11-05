@@ -6,3 +6,14 @@ According to [this issue](https://github.com/Facepunch/garrysmod-requests/issues
 
 ## Installation
 Clone or download this repository into your `garrysmod/addons` folder and restart your server or game.
+
+## Use
+```lua
+require( "playerload" )
+
+hook.Add( "PlayerFullLoad", "OnPlayerFullyLoaded", function( ply )
+    net.Start( "example" )
+    net.WriteString( "welcome :)" )
+    net.Send( ply )
+end )
+```
