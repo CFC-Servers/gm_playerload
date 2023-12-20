@@ -1,3 +1,5 @@
+-- https://github.com/CFC-Servers/gm_playerload
+
 local loadQueue = {}
 
 hook.Add( "PlayerInitialSpawn", "GM_FullLoadSetup", function(ply)
