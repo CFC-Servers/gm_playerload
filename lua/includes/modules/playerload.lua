@@ -11,5 +11,7 @@ hook.Add( "SetupMove", "GM_FullLoadTrigger", function( ply, _, cmd )
     if cmd:IsForced() then return end
 
     loadQueue[ply] = nil
-    hook.Run( "PlayerFullLoad", ply )
+    ProtectedCall( function()
+        hook.Run( "PlayerFullLoad", ply )
+    end )
 end )
